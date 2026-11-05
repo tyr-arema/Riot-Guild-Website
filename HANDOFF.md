@@ -81,7 +81,7 @@ what's in progress, what's blocked, what's recommended next.
   sitting in two internal docs: removed from README.md and redacted in
   RESKIN-REPORT.md. No `.env.example` needed — the site takes no config.
 - **Current state:** Site is live on Cloudflare Pages via Direct Upload at
-  https://skuld-wow.pages.dev (legacy project name). Content is the
+  https://riot-wow.pages.dev (renamed from the legacy `skuld-wow` project). Content is the
   2026-11-05 Brill/Undercity jail reskin: Sat+Sun 8–11 PM ET raids, raids
   open Dec 9 2026, Soft Reserve loot, six guide chapters, Tier 2 server.
   This branch adds the collaboration contract: `AGENTS.md` (verbatim from

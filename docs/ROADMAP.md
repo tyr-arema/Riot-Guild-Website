@@ -31,9 +31,9 @@ already being in the server, and it does not link to the server.
 **Pending from the collaborator's handoff**
 - R!ot Discord invite link for the nav button, hero button and join box.
 - Whether `RESKIN-REPORT.md` stays in a public repo.
-- Cloudflare project rename (`skuld-wow.pages.dev` is the old guild's name) or
-  a custom domain. The canonical URL and all Open Graph image URLs still point
-  at the old name.
+- Cloudflare project rename: done. The project is now `riot-wow.pages.dev`
+  and the canonical, Open Graph, JSON-LD, robots and sitemap URLs point at it
+  (#13). A custom domain can still be attached later.
 - Branch protection on `main` (AGENTS.md claims it; the repo has none).
 - Phone layout has no section navigation, only the Join button.
 
@@ -136,7 +136,8 @@ Every item is a spoke task. Model and effort are the hub's starting picks.
 1. Which ruleset and region R!ot plays on (blocks 0.2).
 2. The Discord invite link (blocks 0.1).
 3. Final domain: rename the Pages project, buy a domain, or keep
-   `skuld-wow.pages.dev` (blocks 0.7, 0.9).
+   `skuld-wow.pages.dev` (blocks 0.7, 0.9). Decided: renamed to
+   `riot-wow.pages.dev`.
 4. Git-connected deploys versus manual zips (0.9).
 5. Plain HTML pages versus a static generator once guides move on-site (1.4).
 6. Whether the site may own an application form, or Discord stays the only
