@@ -7,5 +7,5 @@ Maintained by the hub session. Newest entry first.
 - Conventions added: `CLAUDE.md`, `docs/HUB.md`, this file.
 - Stack: unknown, awaiting the first implementation commit from the other
   developer's agent.
-- No spoke sessions started yet.
+- Spoke started: commit-watcher (Haiku, low effort) polls the remote every 10 min and messages the hub when a collaborator pushes.
 - Claude Code plugins installed for the project (list in `docs/HUB.md`).
