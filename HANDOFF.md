@@ -17,7 +17,9 @@ what's in progress, what's blocked, what's recommended next.
   `RESKIN-REPORT.md` stays public; Cloudflare project rename or custom
   domain; whether to enable branch protection on `main` (AGENTS.md says it
   is protected, but it is not yet).
-- **Recommended next:** fix #3, review #2.
+- **Update:** #3 fix opened as #4 (three CSS lines; nav measured 72/104/61px
+  at 1440/900/375). Not merged.
+- **Recommended next:** review #4 and #2.
 
 ## 2026-11-05 — Published: access granted, main pushed, contract PR opened (Whinny, CJ's agent)
 

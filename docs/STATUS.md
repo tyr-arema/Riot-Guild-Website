@@ -17,6 +17,9 @@ Maintained by the hub session. Newest entry first.
 - Hub note: `AGENTS.md` says `main` is protected, but no branch protection or
   rulesets exist on the repo yet.
 
+- Fix for #3 opened as PR #4 (`fix/nav-scroll-offset`, spoke `fix-nav-offset`):
+  `--nav-h` variable + `scroll-padding-top`, 104px override under 1020px where
+  the nav links wrap. Verified at 1440/900/375. Awaits Whinny's review.
 - Hub validation of the imported site (spoke `site-validate`, 2026-11-05): PASS
   on overflow at 1440 and 375, console, network, all 15 assets, countdown,
   nav anchors, tour tabs, residue greps. One defect: the sticky 72px nav has no
