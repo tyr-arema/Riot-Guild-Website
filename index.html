@@ -116,7 +116,7 @@
   /* what-we-do cards */
   .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
   .card{background:var(--glass-base);background-image:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:26px}
-  .card-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
+  .card-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:6px}
   .card h3{font-size:23px}
   .card .tag{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);white-space:nowrap}
   .card .c-lead{font-size:17px;color:var(--ash-pale);margin-bottom:12px}
@@ -176,6 +176,14 @@
   footer .drip{font-size:19px;margin-top:10px}
   footer .fine{margin-top:14px;font-size:13px;color:var(--ash-dim)}
 
+  .skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--green-deep);color:var(--ash-pale);font-weight:700;padding:10px 16px;border-radius:10px;border:1px solid var(--green);text-decoration:none}
+  .skip:focus{top:12px}
+  a:focus-visible,button:focus-visible,.btn:focus-visible,.tour-btn:focus-visible,.tour-panel:focus-visible{outline:2px solid var(--green-bright);outline-offset:3px}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal,.reveal.in{opacity:1;transform:none;transition:none}
+  }
+
   @media (max-width:1020px){
     :root{--nav-h:104px}
     .road-grid{grid-template-columns:repeat(2,1fr)}
@@ -200,6 +208,7 @@
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="nav">
   <div class="nav-in">
@@ -246,6 +255,7 @@
   </div>
 </section>
 
+<main id="main">
 <section class="road-sec" id="road">
   <div class="wrap">
     <p class="eyebrow reveal">The Road</p>
@@ -450,26 +460,26 @@
     <div class="tour reveal">
       <div class="tour-list" role="tablist" aria-label="Discord stops">
         <p class="tour-cat">🚪 Entry</p>
-        <button class="tour-btn active" data-panel="p-path" role="tab">🌳 choose-your-path</button>
-        <button class="tour-btn" data-panel="p-welcome" role="tab">📗 welcome-and-rules</button>
-        <button class="tour-btn" data-panel="p-tag" role="tab">🏷️ tag-yourself</button>
+        <button class="tour-btn active" id="t-path" data-panel="p-path" role="tab" aria-selected="true" aria-controls="p-path" tabindex="0">🌳 choose-your-path</button>
+        <button class="tour-btn" id="t-welcome" data-panel="p-welcome" role="tab" aria-selected="false" aria-controls="p-welcome" tabindex="-1">📗 welcome-and-rules</button>
+        <button class="tour-btn" id="t-tag" data-panel="p-tag" role="tab" aria-selected="false" aria-controls="p-tag" tabindex="-1">🏷️ tag-yourself</button>
         <p class="tour-cat">⚔️ Raids</p>
-        <button class="tour-btn" data-panel="p-raid" role="tab">☑️ raid-signups</button>
+        <button class="tour-btn" id="t-raid" data-panel="p-raid" role="tab" aria-selected="false" aria-controls="p-raid" tabindex="-1">☑️ raid-signups</button>
         <p class="tour-cat">🛠️ Professions</p>
-        <button class="tour-btn" data-panel="p-prof" role="tab">🛠️ profession</button>
+        <button class="tour-btn" id="t-prof" data-panel="p-prof" role="tab" aria-selected="false" aria-controls="p-prof" tabindex="-1">🛠️ profession</button>
         <p class="tour-cat">📖 Classes</p>
-        <button class="tour-btn" data-panel="p-class" role="tab">📖 class</button>
+        <button class="tour-btn" id="t-class" data-panel="p-class" role="tab" aria-selected="false" aria-controls="p-class" tabindex="-1">📖 class</button>
         <p class="tour-cat">🩸 PvP</p>
-        <button class="tour-btn" data-panel="p-pvp" role="tab">✍️ pvp-signups</button>
+        <button class="tour-btn" id="t-pvp" data-panel="p-pvp" role="tab" aria-selected="false" aria-controls="p-pvp" tabindex="-1">✍️ pvp-signups</button>
         <p class="tour-cat">👥 Pugs</p>
-        <button class="tour-btn" data-panel="p-pug" role="tab">🗡️ pug-signup</button>
+        <button class="tour-btn" id="t-pug" data-panel="p-pug" role="tab" aria-selected="false" aria-controls="p-pug" tabindex="-1">🗡️ pug-signup</button>
         <p class="tour-cat">📜 Records</p>
-        <button class="tour-btn" data-panel="p-rules" role="tab">⚖️ guild-rules</button>
+        <button class="tour-btn" id="t-rules" data-panel="p-rules" role="tab" aria-selected="false" aria-controls="p-rules" tabindex="-1">⚖️ guild-rules</button>
         <p class="tour-cat">🔥 Social</p>
-        <button class="tour-btn" data-panel="p-apps" role="tab">📥 applications</button>
+        <button class="tour-btn" id="t-apps" data-panel="p-apps" role="tab" aria-selected="false" aria-controls="p-apps" tabindex="-1">📥 applications</button>
       </div>
       <div>
-        <div class="tour-panel active" id="p-path">
+        <div class="tour-panel active" id="p-path" role="tabpanel" aria-labelledby="t-path" tabindex="0">
           <img src="assets/card-choose-your-path.webp" alt="Choose Your Path card" loading="lazy" />
           <h3>🌳 choose-your-path <span class="pin">📌 Start here</span></h3>
           <p><b># R!OT</b> — New here? Three moves and you're through intake.</p>
@@ -487,7 +497,7 @@
             <li><b>🃏 Social</b> — gallows-end: the meme crypt, feast nights, Jockie requests, and movie nights</li>
           </ul>
         </div>
-        <div class="tour-panel" id="p-welcome">
+        <div class="tour-panel" id="p-welcome" role="tabpanel" aria-labelledby="t-welcome" tabindex="0" hidden>
           <img src="assets/card-welcome-and-rules.webp" alt="Welcome and Rules card" loading="lazy" />
           <h3>📗 welcome-and-rules <span class="pin">📌 Pinned</span></h3>
           <p><b>🚪 WELCOME AND RULES</b> — the front door of the jail. <i>Death was only intake. Welcome to the cellblock.</i></p>
@@ -498,7 +508,7 @@
             <li><b>🔒 This room is locked</b> — do your picks in #choose-your-path and say hello in #the-meme-crypt instead</li>
           </ul>
         </div>
-        <div class="tour-panel" id="p-tag">
+        <div class="tour-panel" id="p-tag" role="tabpanel" aria-labelledby="t-tag" tabindex="0" hidden>
           <img src="assets/card-tag-yourself.webp" alt="Tag Yourself card" loading="lazy" />
           <h3>🏷️ tag-yourself <span class="pin">📌 Pinned</span></h3>
           <p><b>🏷️ TAG YOURSELF</b> — <i>“Your tags tell the guild what you play.”</i> Tap spec + professions. Tags become roles.</p>
@@ -509,7 +519,7 @@
           </ul>
           <p>Each trade is a post in the 🛠️profession forum — ⚗️the-alchemy-still · ⚒️the-smithy · ✨enchanters-sanctum · 🔧the-engineers-bay · 🥾the-tannery · 🧵the-loom · 🌱the-greenhouse · ⛏️the-quarry · 🔪the-trappers-camp · 🍳the-guild-kitchen · 🩹the-infirmary · 🎣the-anglers-dock — tap a tag in the forum to filter to its post.</p>
         </div>
-        <div class="tour-panel" id="p-raid">
+        <div class="tour-panel" id="p-raid" role="tabpanel" aria-labelledby="t-raid" tabindex="0" hidden>
           <img src="assets/card-raid-signups.webp" alt="Raid Sign-Ups card" loading="lazy" />
           <h3>☑️ raid-signups <span class="pin">📌 Pinned</span></h3>
           <p>A forum — the 📌 START HERE starter is locked. Officers and group leaders open one post per raid night; sign up inside yours. <b>Opens Dec 9.</b></p>
@@ -521,7 +531,7 @@
           </ul>
           <p>Pugging instead? Runs are posts in the 🗡️pug-signup forum — the gear check comes first.</p>
         </div>
-        <div class="tour-panel" id="p-prof">
+        <div class="tour-panel" id="p-prof" role="tabpanel" aria-labelledby="t-prof" tabindex="0" hidden>
           <img src="assets/card-profession.webp" alt="Professions card" loading="lazy" />
           <h3>🛠️ profession <span class="pin">📌 Pinned · Professions</span></h3>
           <p>A forum — the 📌 START HERE starter is the index, locked. Every trade is a post inside it.</p>
@@ -541,7 +551,7 @@
           </ul>
           <p>Find your trade — tap a tag to filter to its post: routes, recipes, and Forever systems. Need something made? Order through 🎟️tickets.</p>
         </div>
-        <div class="tour-panel" id="p-class">
+        <div class="tour-panel" id="p-class" role="tabpanel" aria-labelledby="t-class" tabindex="0" hidden>
           <img src="assets/card-class.webp" alt="The Nine Classes card" loading="lazy" />
           <h3>📖 class <span class="pin">📌 Pinned · Classes</span></h3>
           <p>A forum — the 📌 START HERE starter is the index, locked. Each class is a post inside it, tagged by class.</p>
@@ -558,7 +568,7 @@
           </ul>
           <p>Filter to your class — tap your class tag and the list narrows. Tags filter, they don't lock — every post stays readable, each one its class's Forever-only guide.</p>
         </div>
-        <div class="tour-panel" id="p-pvp">
+        <div class="tour-panel" id="p-pvp" role="tabpanel" aria-labelledby="t-pvp" tabindex="0" hidden>
           <img src="assets/card-pvp-signups.webp" alt="PvP Sign-Ups card" loading="lazy" />
           <h3>✍️ pvp-signups <span class="pin">📌 Pinned · PvP</span></h3>
           <p><i>“Blood answers blood. Put your name down.”</i></p>
@@ -570,7 +580,7 @@
           </ul>
           <p>Ready to go? The rules live in 📘pvp-guide, a locked room; groups coordinate from the sign-up threads and PvP voice.</p>
         </div>
-        <div class="tour-panel" id="p-pug">
+        <div class="tour-panel" id="p-pug" role="tabpanel" aria-labelledby="t-pug" tabindex="0" hidden>
           <img src="assets/card-pug-signup.webp" alt="Pug Sign-Up card" loading="lazy" />
           <h3>🗡️ pug-signup <span class="pin">📌 Pinned · Pugs</span></h3>
           <p><i>“The horn sounds for everyone.”</i></p>
@@ -582,7 +592,7 @@
           </ul>
           <p>Want the guild tag? Applications go through the 📥applications room, straight to the officers — every applicant gets a real answer.</p>
         </div>
-        <div class="tour-panel" id="p-rules">
+        <div class="tour-panel" id="p-rules" role="tabpanel" aria-labelledby="t-rules" tabindex="0" hidden>
           <img src="assets/card-guild-rules.webp" alt="Guild Rules card" loading="lazy" />
           <h3>⚖️ guild-rules <span class="pin">📌 Pinned · Records</span></h3>
           <p><b>⚖️ Guild Records — Written once. Read by all. Kept in the crypt.</b></p>
@@ -595,7 +605,7 @@
           </ul>
           <p>The chain: Guildlead → Officer → Raider. Join as New Member → Trial Member on the raiding path → Raider by officer grant. Member is the social standing. War logs — threads in the ⚔️war-log-posts forum, Raider and Officer only. WoW news — stories land as threads in the 📰wow-news forum, one thread per story. The library — guides and the six chapters, as posts in 📚guides-and-resources. Missing a raid? Post it in 🌙absence-reports.</p>
         </div>
-        <div class="tour-panel" id="p-apps">
+        <div class="tour-panel" id="p-apps" role="tabpanel" aria-labelledby="t-apps" tabindex="0" hidden>
           <img src="assets/card-applications.webp" alt="Applications card" loading="lazy" />
           <h3>📥 applications <span class="pin">📌 Pinned · Social</span></h3>
           <p><i>“Every applicant gets a real answer.”</i></p>
@@ -610,6 +620,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
@@ -704,15 +715,30 @@
     }
     tick(); setInterval(tick, 1000);
   })();
-  // Server tour
+  // Server tour (tabs: click, arrows, Home/End)
   (function(){
-    var btns = document.querySelectorAll('.tour-btn');
-    btns.forEach(function(b){
-      b.addEventListener('click', function(){
-        btns.forEach(function(x){x.classList.remove('active');});
-        document.querySelectorAll('.tour-panel').forEach(function(p){p.classList.remove('active');});
-        b.classList.add('active');
-        document.getElementById(b.getAttribute('data-panel')).classList.add('active');
+    var btns = Array.prototype.slice.call(document.querySelectorAll('.tour-btn'));
+    function select(b, focus){
+      btns.forEach(function(x){
+        var on = x === b;
+        var panel = document.getElementById(x.getAttribute('data-panel'));
+        x.classList.toggle('active', on);
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        panel.classList.toggle('active', on);
+        panel.hidden = !on;
+      });
+      if(focus) b.focus();
+    }
+    btns.forEach(function(b, i){
+      b.addEventListener('click', function(){ select(b); });
+      b.addEventListener('keydown', function(e){
+        var n = null;
+        if(e.key === 'ArrowRight' || e.key === 'ArrowDown') n = btns[(i + 1) % btns.length];
+        else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = btns[(i - 1 + btns.length) % btns.length];
+        else if(e.key === 'Home') n = btns[0];
+        else if(e.key === 'End') n = btns[btns.length - 1];
+        if(n){ e.preventDefault(); select(n, true); }
       });
     });
   })();
