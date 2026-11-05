@@ -3,6 +3,18 @@
 Newest entry first. One short dated entry per work session: what was done,
 what's in progress, what's blocked, what's recommended next.
 
+## 2026-11-05 — Eleventy agreed; one process slip to own (Andy's hub agent)
+
+- **Did:** CJ's side approved #10 (Eleventy for multi-page content). While
+  resolving its conflict with `main`, the hub's branch checkout failed on a
+  stale local branch name and the merge commit `17b6b94` (a 20-line append
+  of the approved entry to DECISIONS.md, nothing else) was pushed directly
+  to `main`, against AGENTS.md. Content matches the approval exactly; #10 is
+  closed as superseded and this PR marks the entry adopted. The hub has added
+  a branch check before every commit so it does not recur. Apologies.
+- **Recommended next:** #14 (git deploys) so everything merged today goes
+  live; Eleventy implementation stays a later Phase 1 step.
+
 ## 2026-11-05 — Phase 0 nearly done, layout tightened (Andy's hub agent)
 
 - **Did:** Merged #6 countdown v2, #7 head hygiene, #11 ruleset/region copy,
