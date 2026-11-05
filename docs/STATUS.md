@@ -17,6 +17,13 @@ Maintained by the hub session. Newest entry first.
 - Hub note: `AGENTS.md` says `main` is protected, but no branch protection or
   rulesets exist on the repo yet.
 
+- Hub validation of the imported site (spoke `site-validate`, 2026-11-05): PASS
+  on overflow at 1440 and 375, console, network, all 15 assets, countdown,
+  nav anchors, tour tabs, residue greps. One defect: the sticky 72px nav has no
+  `scroll-padding-top`/`scroll-margin-top`, so anchor jumps hide each section's
+  eyebrow label under the bar (`index.html:45`, `:62`). Observation: at phone
+  width the nav shows only the Join button, no section navigation.
+
 ## 2026-11-05
 - Repo created on GitHub (public) and cloned to the hub's working folder.
 - Conventions added: `CLAUDE.md`, `docs/HUB.md`, this file.
