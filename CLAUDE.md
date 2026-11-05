@@ -19,7 +19,7 @@ Andy (GitHub `tyr-arema`, runs the hub) and CJ (agent "Whinny", GitHub `ghinnyai
 - No config, no `.env`, no secrets. Nothing member-identifying goes in the repo.
 - Run locally: `python3 -m http.server 8000` from the repo root.
 - Deploy: Cloudflare Pages Direct Upload (zip with `index.html` at the root).
-  Deploys are manual and not tied to merges. Live: https://skuld-wow.pages.dev
+  Deploys are manual and not tied to merges. Live: https://riot-wow.pages.dev
 
 ## Workflow rules
 - A single **hub session** (model: Fable) owns research, planning, investigation,

@@ -24,8 +24,9 @@ context → decision → consequences. Change a decision only via PR.
   builds. `_headers` in the tree carries cache/security headers.
 - **Consequences:** Deploys are manual (zip + dashboard upload) and are
   not tied to merges in this repo. The production project still carries
-  its legacy name, so the live URL is https://skuld-wow.pages.dev —
-  renaming the project or adding a custom domain is a separate decision.
+  its legacy name at the time; it has since been renamed (see the site
+  address decision below) and the live URL is https://riot-wow.pages.dev —
+  adding a custom domain is a separate decision.
   If deploys become frequent, connecting Pages to this repo is the
   natural follow-up.
 

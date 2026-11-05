@@ -3,9 +3,9 @@
 Public website for **R!ot**, a Horde guild playing **World of Warcraft: Forever**.
 Themed on Brill and the Undercity jail — crypt black, plague green, iron bars.
 
-Live site: https://skuld-wow.pages.dev (the Cloudflare Pages project still
-carries its legacy name; a riot-named project or custom domain is a pending
-decision — see DECISIONS.md).
+Live site: https://riot-wow.pages.dev (the Cloudflare Pages project was
+renamed from its legacy name; a custom domain can be attached later — see
+DECISIONS.md).
 
 ## What's on the page
 

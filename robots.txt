@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://skuld-wow.pages.dev/sitemap.xml
+Sitemap: https://riot-wow.pages.dev/sitemap.xml
