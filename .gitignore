@@ -19,7 +19,13 @@ desktop.ini
 node_modules/
 dist/
 build/
+.next/
+out/
+coverage/
 .wrangler/
 
 # Deploy artifacts
 *.zip
+
+# Claude local settings
+.claude/settings.local.json

@@ -62,3 +62,12 @@ Two developers (each with an AI agent) share this repo. Read `AGENTS.md`
 before starting work; keep `HANDOFF.md` and `DECISIONS.md` current.
 `RESKIN-REPORT.md` is the 2026-11-05 build/verification report for the
 current design.
+
+### Hub coordination docs
+
+This repo was initialized by the project hub session on 2026-11-05. The
+hub side also maintains:
+
+- `CLAUDE.md` — rules every Claude agent follows when working in this repo.
+- `docs/HUB.md` — how the hub session coordinates spoke sessions.
+- `docs/STATUS.md` — current state of the project, kept by the hub.
