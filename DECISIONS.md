@@ -58,3 +58,23 @@ context → decision → consequences. Change a decision only via PR.
   Because the repo is public, no secrets, credentials, or real member
   data may ever be committed — the site is kept free of all three by
   design (no config, no `.env`).
+
+## 2026-11-05 — Multi-page content via Eleventy (proposed, needs both sides)
+
+- **Context:** The guide chapters and the full loot policy are moving from
+  Discord forum posts onto the site so search engines can index them. That
+  means several pages sharing one head, nav and footer. The 2026-11-05
+  "no build step" decision said to revisit at multiple pages.
+- **Decision:** Use Eleventy (11ty) with Markdown content and one Nunjucks
+  layout, building to static HTML in `_site/`. No client-side framework; the
+  shipped output stays plain HTML, CSS and vanilla JS. Build command
+  `npx @11ty/eleventy`, output directory `_site`, set on the Pages project.
+  `index.html` becomes the home layout's content; the inline CSS moves to a
+  shared stylesheet.
+- **Consequences:** The repo gains `package.json`, `.eleventy.js` and a
+  `src/` tree; `node_modules/` and `_site/` are ignored. Local preview is
+  `npx @11ty/eleventy --serve`. Contributors need Node. The site keeps its
+  "any static host" property because the build output is still plain files.
+- **Alternatives considered:** plain HTML pages (no build, but every shared
+  change edited in every file) and staying single-page (guides stay
+  unindexed in Discord).
