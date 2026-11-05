@@ -39,10 +39,11 @@
     --glass-strong:linear-gradient(155deg,rgba(201,210,192,.18),rgba(201,210,192,.07) 52%,rgba(201,210,192,.03));
     --glass-base:rgba(16,21,14,.55);
     --glass-border:rgba(128,224,96,.28);
+    --nav-h:72px;
     --serif:'Cinzel',serif; --body:'Source Sans 3',system-ui,sans-serif; --drip:'Nosifer',cursive;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 8px)}
   body{background:var(--bg);color:var(--ash);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:hidden}
   img{max-width:100%;display:block}
   a{color:var(--green-bright)}
@@ -171,6 +172,7 @@
   footer .fine{margin-top:14px;font-size:13px;color:var(--ash-dim)}
 
   @media (max-width:1020px){
+    :root{--nav-h:104px}
     .road-grid{grid-template-columns:repeat(2,1fr)}
     .steps{grid-template-columns:repeat(3,1fr)}
     .chapters{grid-template-columns:repeat(2,1fr)}
