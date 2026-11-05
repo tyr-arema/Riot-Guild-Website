@@ -30,3 +30,14 @@ build and tests, check the brief was met, and check nothing out of scope changed
 ## Pending
 - First implementation commit from the other developer's agent will establish the
   stack. Until then no feature spokes are started.
+
+## Installed Claude Code plugins (user scope, 2026-11-05)
+All from the official Anthropic marketplace (`claude-plugins-official`). They load
+in every session on this machine, so spokes can be told to use them by name.
+- `frontend-design` — UI/UX implementation guidance for spokes doing page work.
+- `feature-dev` — structured feature implementation workflow for spokes.
+- `pr-review-toolkit` — review agents the hub uses to validate spoke PRs.
+- `playwright` — browser automation MCP for end-to-end checks of the site.
+- `context7` — up-to-date library docs MCP; spokes use it instead of guessing APIs.
+- `github` — GitHub MCP for issues and PRs.
+- `security-guidance` — hook that flags risky patterns during edits.
