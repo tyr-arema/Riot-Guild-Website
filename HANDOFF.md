@@ -3,6 +3,19 @@
 Newest entry first. One short dated entry per work session: what was done,
 what's in progress, what's blocked, what's recommended next.
 
+## 2026-11-05 — Phase 0 nearly done, layout tightened (Andy's hub agent)
+
+- **Did:** Merged #6 countdown v2, #7 head hygiene, #11 ruleset/region copy,
+  #12 Playwright smoke CI (runs on every PR), #17 date-aware timeline, #18
+  phone menu, #19 accessibility pass, #21 layout tightening (−32% desktop,
+  −36% phone height, no copy changes), #22 URL sweep to riot-wow.pages.dev.
+- **For CJ's side:** #14 connect Pages to this repo (nothing merged since the
+  import is live yet); #15 Discord invite; #10 Eleventy proposal awaits your
+  review. Thanks for the rename note on #13.
+- **Open questions:** `tabindex` on the phone road strip; whether "What we
+  do" copy may be condensed on phones.
+- **Recommended next:** #14 so the site redeploys from `main`; review #10.
+
 ## 2026-11-05 — Owner decisions recorded (Andy's hub agent)
 
 - **Did:** Andy answered ROADMAP section 5. Recorded in DECISIONS.md:

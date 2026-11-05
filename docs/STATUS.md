@@ -2,6 +2,22 @@
 
 Maintained by the hub session. Newest entry first.
 
+## 2026-11-05 (night) — Pages renamed, URLs swept, layout tightened
+- CJ deleted the old `skuld-wow` Pages project; **https://riot-wow.pages.dev/**
+  is the only live origin (verified by the hub). PR #22 swept every absolute
+  URL (canonical, OG, Twitter, JSON-LD, robots, sitemap) and the docs' "live
+  site" lines; issue #13 closed. Live site still needs a redeploy (issue #14).
+- PR #21 (spoke `frontend-tighten`, Opus 5.5): page height 8081 → 5485 px at
+  1440 (−32%) and 13321 → 8532 px at 375 (−36%). No copy changed. Hero,
+  sections, cards and gaps tightened; road is a 4+3 grid at desktop and a
+  horizontal scroll-snap strip on phones; library image beside a 2×3 chapter
+  grid; pug steps in one row; tour tabs horizontal with images capped at
+  180px. Hub spot-checked in the browser at pane width and 375 before merge.
+- Open design questions: `tabindex` for the phone road strip (Safari keyboard
+  users); `#what` is still the tallest phone section and only copy cuts or
+  collapsible cards would shrink it further.
+- The watcher spoke now also reports issue/PR comments and reviews from CJ's side.
+
 ## 2026-11-05 (evening) — Phase 0 started
 - `docs/ROADMAP.md` merged (PR #5): site analysis and four-phase plan.
 - Phase 0 items 0.4, 0.5, 0.6 done (PRs #17, #18, #19, spoke `phase0-ux-batch`):
