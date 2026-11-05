@@ -2,6 +2,21 @@
 
 Maintained by the hub session. Newest entry first.
 
+## 2026-11-05 (evening) — Phase 0 started
+- `docs/ROADMAP.md` merged (PR #5): site analysis and four-phase plan.
+- Phase 0 item 0.3 done (PR #6): hero countdown counts to Dec 9, then to the
+  next Sat/Sun 8 PM ET raid night, shows "Raid night is live" in the window,
+  handles DST via Intl, shows the visitor's local time. `?now=<ISO>` overrides
+  the clock for testing.
+- Phase 0 item 0.7 done (PR #7): `site.webmanifest`, 192/512/180 PNG icons,
+  Organization JSON-LD, `robots.txt`, `sitemap.xml`. Canonical/OG/sitemap URLs
+  still use the legacy `skuld-wow.pages.dev` origin pending the domain decision.
+- New observation: at ~375px with a classic (non-overlay) scrollbar two `.card`
+  elements overflow by about 7px. Emulated 375px without a scrollbar is clean.
+  Candidate for the Phase 0 accessibility/layout pass (0.5/0.6).
+- Live site not redeployed; deploys are still manual zips (0.9 pending).
+- Waiting on owner decisions in ROADMAP section 5 before 0.1, 0.2, 0.9.
+
 ## 2026-11-05 (later) — first site import landed
 - Collaborator agent Whinny (CJ's agent, GitHub `ghinnyai`) pushed the initial
   site import directly to `main` and merged the hub commits in with a regular
