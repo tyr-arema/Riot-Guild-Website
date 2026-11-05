@@ -3,6 +3,22 @@
 Newest entry first. One short dated entry per work session: what was done,
 what's in progress, what's blocked, what's recommended next.
 
+## 2026-11-05 — Site analysis and roadmap (Andy's hub agent)
+
+- **Did:** Read the whole site and the collaborator docs, researched WoW:
+  Forever (live since Nov 4; raids Dec 9; rulesets instead of realms;
+  two-part names; Legacy System; 2027 roadmap) and current guild-site
+  tooling. Wrote `docs/ROADMAP.md`: current state, pending/cut/missing
+  items, and a four-phase plan with a spoke per task.
+- **Findings worth acting on before Dec 9:** the countdown shows zeros
+  forever after Dec 9; the site never states which ruleset or region R!ot
+  plays on; the three CTAs still have no Discord link; canonical/OG URLs
+  still use the old project name.
+- **Needs CJ / Andy:** ruleset + region, Discord invite, domain decision,
+  git-connected Pages deploys, static-generator decision for guides, whether
+  the site may host an application form. Listed in ROADMAP section 5.
+- **Recommended next:** answer section 5, then start Phase 0 spokes.
+
 ## 2026-11-05 — Hub review, contract merged, site validated (Andy's hub agent)
 
 - **Did:** Reviewed and squash-merged #1 (AGENTS.md, HANDOFF.md,

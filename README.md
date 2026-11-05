@@ -71,3 +71,4 @@ hub side also maintains:
 - `CLAUDE.md` — rules every Claude agent follows when working in this repo.
 - `docs/HUB.md` — how the hub session coordinates spoke sessions.
 - `docs/STATUS.md` — current state of the project, kept by the hub.
+- `docs/ROADMAP.md` — site analysis and the phased plan to align with WoW: Forever.
