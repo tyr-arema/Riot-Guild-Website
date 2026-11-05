@@ -74,6 +74,9 @@
   .nav-links{display:flex;gap:20px;margin-left:auto;align-items:center;flex-wrap:wrap}
   .nav-links a{color:var(--ash);text-decoration:none;font-size:15px;font-weight:600}
   .nav-links a:hover{color:var(--green-bright)}
+  .nav-panel{display:contents}
+  .nav-toggle{display:none;width:44px;height:44px;align-items:center;justify-content:center;font-size:22px;line-height:1;color:var(--ash-pale);background:transparent;border:1px solid rgba(128,224,96,.4);border-radius:10px;cursor:pointer;padding:0}
+  .nav-toggle:hover{color:var(--green-bright)}
   .badge{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);border:1px solid rgba(154,134,224,.45);border-radius:999px;padding:4px 10px;white-space:nowrap}
   .btn{display:inline-block;background:linear-gradient(180deg,var(--green-dim),var(--green-deep));color:#EAF7E2;font-weight:700;text-decoration:none;padding:11px 22px;border-radius:10px;border:1px solid rgba(128,224,96,.5);font-size:16px}
   .btn:hover{filter:brightness(1.15)}
@@ -183,7 +186,11 @@
     .chapters{grid-template-columns:repeat(2,1fr)}
   }
   @media (max-width:860px){
-    .nav-links a:not(.btn){display:none}
+    .nav-toggle{display:inline-flex;margin-left:auto}
+    .nav-links{margin-left:0}
+    .nav-panel{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;background:rgba(7,9,11,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(128,224,96,.18);padding:6px 20px 10px}
+    .nav.open .nav-panel{display:flex}
+    .nav-panel a{display:flex;align-items:center;min-height:44px;font-size:17px}
     .cards,.trio,.paths,.duo{grid-template-columns:1fr}
     .tour{grid-template-columns:1fr}
     .tour-list{flex-direction:row;flex-wrap:wrap}
@@ -208,13 +215,16 @@
       <span><span class="name">R!OT</span><span class="sub">Horde · PvP · NA · WoW: Forever</span></span>
     </a>
     <span class="badge">Tier 2 · Boosted</span>
-    <nav class="nav-links" aria-label="Guild sections">
-      <a href="#server">The Server</a>
-      <a href="#about">The Jail</a>
-      <a href="#what">What We Do</a>
-      <a href="#recruit">Recruit</a>
-      <a href="#pug">Pug</a>
-      <a href="#road">The Road</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="nav-links" aria-label="Guild sections">
+      <div class="nav-panel">
+        <a href="#server">The Server</a>
+        <a href="#about">The Jail</a>
+        <a href="#what">What We Do</a>
+        <a href="#recruit">Recruit</a>
+        <a href="#pug">Pug</a>
+        <a href="#road">The Road</a>
+      </div>
       <a class="btn small" href="#join">Join R!ot</a>
     </nav>
   </div>
@@ -703,6 +713,22 @@
       show(r.target - t);
     }
     tick(); setInterval(tick, 1000);
+  })();
+  // Phone nav menu
+  (function(){
+    var nav = document.querySelector('.nav'), btn = nav.querySelector('.nav-toggle');
+    function set(open){
+      nav.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      btn.textContent = open ? '✕' : '☰';
+    }
+    btn.addEventListener('click', function(){ set(!nav.classList.contains('open')); });
+    nav.querySelectorAll('.nav-panel a').forEach(function(a){ a.addEventListener('click', function(){ set(false); }); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && nav.classList.contains('open')){ set(false); btn.focus(); }
+    });
+    document.addEventListener('click', function(e){ if(!nav.contains(e.target)) set(false); });
   })();
   // Server tour
   (function(){
