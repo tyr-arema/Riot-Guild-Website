@@ -4,6 +4,17 @@ Maintained by the hub session. Newest entry first.
 
 ## 2026-11-05 (evening) — Phase 0 started
 - `docs/ROADMAP.md` merged (PR #5): site analysis and four-phase plan.
+- Phase 0 items 0.4, 0.5, 0.6 done (PRs #17, #18, #19, spoke `phase0-ux-batch`):
+  date-aware road timeline with Blizzard's 2027 roadmap stops (approximate
+  dates, marked); phone section menu under 860px (44px rows, Escape/outside
+  click close, nav 65px); accessibility pass (reduced motion, focus-visible,
+  skip link + `<main>`, full tab ARIA with arrow keys) and the narrow-screen
+  card overflow fixed (`.card-head` now wraps). Each PR passed smoke locally
+  and in CI; merged in order after per-PR mergeability checks.
+- Known nits: `.tour-cat` labels sit inside the tablist (not strictly valid
+  ARIA); 2027 stops need real dates when Blizzard publishes them.
+- Phase 0 remaining: 0.1 (issue #15), 0.7 URL sweep (issue #13), 0.8 report
+  move + branch protection, 0.9 (issue #14). Eleventy proposal PR #10 open.
 - Phase 0 item 0.2 done (PR #11): hero, nav, join box and all descriptions
   state "PvP ruleset · North America".
 - Phase 0 item 0.10 done (PR #12): GitHub Actions "Smoke" workflow on PRs and
