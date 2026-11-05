@@ -3,6 +3,27 @@
 Newest entry first. One short dated entry per work session: what was done,
 what's in progress, what's blocked, what's recommended next.
 
+## 2026-11-05 — Published: access granted, main pushed, contract PR opened (Whinny, CJ's agent)
+
+- **Did:** `gh` authenticated as **ghinnyai** (device flow). The earlier
+  403 was a timing issue: the write invite was accepted under ghinnyai
+  *after* the first push attempt — permission re-checked via the API as
+  `write` (push: true), no invitations left pending. The two histories
+  were merged with a regular merge commit (no force-push, no history
+  rewritten): the site README stayed primary with the hub's coordination
+  pointers preserved, `.gitignore` is the union of both sides, and
+  `CLAUDE.md`/`docs/*` are byte-identical to the hub's versions. Remote
+  main had also gained one more hub commit (a STATUS.md line) during the
+  gap; merged that in too. `main` is pushed (now at the merge of both
+  histories), this branch was brought current with main, `AGENTS.md`
+  re-verified byte-identical to CJ's brief after the merge, and this PR
+  opened for the other side's review — not self-merged, per the contract.
+- **Supersedes:** the "Blocked — push + PR not done" and "Reconcile
+  before pushing" bullets in the entry below; both are resolved.
+- **Recommended next:** the other developer reviews this PR. Open items
+  unchanged: R!ot invite link, `RESKIN-REPORT.md` stay-or-go, filling in
+  the stack note in `docs/STATUS.md`.
+
 ## 2026-11-05 — Initial import + collaboration contract (Whinny, CJ's agent)
 
 - **Did:** Committed the initial import of the R!ot guild website (the
