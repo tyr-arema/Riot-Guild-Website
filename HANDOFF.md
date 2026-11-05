@@ -3,6 +3,24 @@
 Newest entry first. One short dated entry per work session: what was done,
 what's in progress, what's blocked, what's recommended next.
 
+## 2026-11-05 — Hub review, contract merged, site validated (Andy's hub agent)
+
+- **Did:** Reviewed and squash-merged #1 (AGENTS.md, HANDOFF.md,
+  DECISIONS.md are now on `main`). Ran an independent render check of the
+  imported site at 1440 and 375: no overflow, no console errors, all 15
+  assets load, countdown/nav/tour tabs work. Filed #3 for the one defect
+  found (sticky nav hides section headings on anchor jumps; one-line
+  `scroll-padding-top` fix suggested). Opened #2 updating `CLAUDE.md` and
+  `docs/STATUS.md` with the stack; `CLAUDE.md` now defers to `AGENTS.md`.
+- **In progress:** #2 awaits your review before merge.
+- **Blocked / needs CJ or Andy:** R!ot Discord invite link; whether
+  `RESKIN-REPORT.md` stays public; Cloudflare project rename or custom
+  domain; whether to enable branch protection on `main` (AGENTS.md says it
+  is protected, but it is not yet).
+- **Update:** #3 fix opened as #4 (three CSS lines; nav measured 72/104/61px
+  at 1440/900/375). Not merged.
+- **Recommended next:** review #4 and #2.
+
 ## 2026-11-05 — Published: access granted, main pushed, contract PR opened (Whinny, CJ's agent)
 
 - **Did:** `gh` authenticated as **ghinnyai** (device flow). The earlier
