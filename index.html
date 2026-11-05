@@ -99,11 +99,13 @@
   .count .when{margin-top:10px;font-size:14px;color:var(--ash-dim)}
 
   /* road */
-  .road-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+  .road-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
   .stop{background:var(--glass-base);background-image:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:22px}
   .stop .date{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);margin-bottom:8px}
   .stop h3{font-size:20px;margin-bottom:8px}
   .stop p{font-size:15.5px;color:var(--ash)}
+  .stop.done .date{color:var(--ash-dim)}
+  .stop.next{border-color:var(--green-bright);box-shadow:0 0 0 1px rgba(128,224,96,.35),0 0 26px rgba(128,224,96,.18)}
   .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
   .chip{font-size:13px;font-weight:600;border:1px solid rgba(128,224,96,.35);color:var(--green-bright);border-radius:999px;padding:4px 11px}
 
@@ -251,26 +253,43 @@
     <p class="eyebrow reveal">The Road</p>
     <h2 class="reveal">From intake to <em>first pull</em></h2>
     <div class="road-grid">
-      <div class="stop reveal">
-        <p class="date">November 4, 2026 · Done</p>
+      <div class="stop reveal" data-date="2026-11-04">
+        <p class="date">November 4, 2026</p>
         <h3>Forever Launches</h3>
         <p>Day one, together — leveling, dungeons, professions. The jail filled up fast.</p>
       </div>
-      <div class="stop reveal">
+      <div class="stop reveal" data-date="2026-12-09">
         <p class="date">December 9, 2026</p>
         <h3>Raids Open</h3>
         <p>Guild loot runs on Soft Reserve from the first boss.</p>
         <div class="chips"><span class="chip">10-player · Barrow Deeps</span><span class="chip">20-player · Hyjal Summit</span><span class="chip">40-player · Onyxia's Lair</span></div>
       </div>
-      <div class="stop reveal">
+      <div class="stop reveal" data-date="2026-12-12">
         <p class="date">Dec 12 + 13, 2026 · 8–11 PM ET</p>
         <h3>First Raid Nights</h3>
         <p>Saturday and Sunday. Sign-ups live in the raid-signups forum; the rules live in the raid guide.</p>
       </div>
-      <div class="stop reveal">
+      <div class="stop reveal" data-date="2026-12-12" data-recurring="1">
         <p class="date">Every weekend after</p>
         <h3>The R!ot Runs On</h3>
         <p>Saturday + Sunday, 8:00–11:00 PM ET — rally nights, events and contests between raids.</p>
+      </div>
+      <div class="stop reveal" data-date="2027-01-01" data-approx="1">
+        <p class="date">Winter 2026/27 · approx.</p>
+        <h3>Hardcore Mode</h3>
+        <p>Blizzard's hardcore ruleset lands. One life, no second chances — we'll see who in the jail is brave enough.</p>
+      </div>
+      <div class="stop reveal" data-date="2027-04-01" data-approx="1">
+        <p class="date">Spring 2027 · approx.</p>
+        <h3>Two New Raids</h3>
+        <p>More walls to break and more bosses to bleed. A new corner of the world opens up, and a legendary road with it.</p>
+        <div class="chips"><span class="chip">2 new raids</span><span class="chip">2 new dungeons</span><span class="chip">Legendary questline</span><span class="chip">PvP season</span></div>
+      </div>
+      <div class="stop reveal" data-date="2027-07-01" data-approx="1">
+        <p class="date">Summer 2027 · approx.</p>
+        <h3>The Road Goes On</h3>
+        <p>An iconic raid reborn, another fresh one beside it, and more dungeons to get lost in. The R!ot keeps rolling.</p>
+        <div class="chips"><span class="chip">Revamped iconic raid</span><span class="chip">New raid</span><span class="chip">2 new dungeons</span></div>
       </div>
     </div>
   </div>
@@ -703,6 +722,19 @@
       show(r.target - t);
     }
     tick(); setInterval(tick, 1000);
+    // Road timeline: mark stops Done / Live by date (ET midnight) and highlight the next one
+    (function(){
+      var t = now(), nextSet = false;
+      document.querySelectorAll('.stop[data-date]').forEach(function(el){
+        var p = el.getAttribute('data-date').split('-');
+        var past = t >= etInstant(+p[0], +p[1], +p[2], 0, 0);
+        var date = el.querySelector('.date');
+        if(past){
+          if(el.hasAttribute('data-recurring')){ date.textContent += ' · Live'; }
+          else { date.textContent += ' · Done'; el.classList.add('done'); }
+        } else if(!nextSet){ el.classList.add('next'); nextSet = true; }
+      });
+    })();
   })();
   // Server tour
   (function(){
