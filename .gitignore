@@ -1,0 +1,22 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Dependencies and build output (generic; refine once the stack is known)
+node_modules/
+dist/
+build/
+.next/
+out/
+coverage/
+
+# Local env and secrets
+.env
+.env.*
+!.env.example
+
+# Claude local settings
+.claude/settings.local.json
