@@ -1,0 +1,25 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment / secrets (this repo is public — never commit real values)
+.env
+.env.*
+!.env.example
+
+# Dependencies / build output (none today — static site; kept for safety)
+node_modules/
+dist/
+build/
+.wrangler/
+
+# Deploy artifacts
+*.zip
