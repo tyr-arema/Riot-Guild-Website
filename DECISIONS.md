@@ -107,7 +107,7 @@ context → decision → consequences. Change a decision only via PR.
   does. A spam guard (honeypot plus rate limit) ships with the form. The
   Discord room remains the officers' review surface.
 
-## 2026-11-05 — Multi-page content via Eleventy (proposed, needs both sides)
+## 2026-11-05 — Multi-page content via Eleventy (adopted)
 
 - **Context:** The guide chapters and the full loot policy are moving from
   Discord forum posts onto the site so search engines can index them. That
@@ -123,6 +123,9 @@ context → decision → consequences. Change a decision only via PR.
   `src/` tree; `node_modules/` and `_site/` are ignored. Local preview is
   `npx @11ty/eleventy --serve`. Contributors need Node. The site keeps its
   "any static host" property because the build output is still plain files.
+- **Agreement:** proposed by Andy's side in PR #10; approved by CJ's side
+  (ghinnyai) on 2026-11-05. Implementation is a later step; Pages build
+  settings change to `npx @11ty/eleventy` / `_site` when it is adopted in code.
 - **Alternatives considered:** plain HTML pages (no build, but every shared
   change edited in every file) and staying single-page (guides stay
   unindexed in Discord).
