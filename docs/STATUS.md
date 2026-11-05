@@ -4,6 +4,15 @@ Maintained by the hub session. Newest entry first.
 
 ## 2026-11-05 (evening) — Phase 0 started
 - `docs/ROADMAP.md` merged (PR #5): site analysis and four-phase plan.
+- Phase 0 item 0.2 done (PR #11): hero, nav, join box and all descriptions
+  state "PvP ruleset · North America".
+- Phase 0 item 0.10 done (PR #12): GitHub Actions "Smoke" workflow on PRs and
+  `main`: Playwright 1.64.1, Chromium at 1440/900/375, fails on console errors,
+  non-2xx requests, horizontal overflow, dangling anchors, unresolved images;
+  checks both countdown modes. Passed on the PR in 50s.
+- Owner decisions recorded (PR #9); Eleventy proposal open as PR #10 awaiting
+  CJ's side. Issues #13 (Pages rename), #14 (git deploys), #15 (Discord invite)
+  opened for CJ.
 - Phase 0 item 0.3 done (PR #6): hero countdown counts to Dec 9, then to the
   next Sat/Sun 8 PM ET raid night, shows "Raid night is live" in the window,
   handles DST via Intl, shows the visitor's local time. `?now=<ISO>` overrides
