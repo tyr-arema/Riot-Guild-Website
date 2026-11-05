@@ -58,3 +58,50 @@ context → decision → consequences. Change a decision only via PR.
   Because the repo is public, no secrets, credentials, or real member
   data may ever be committed — the site is kept free of all three by
   design (no config, no `.env`).
+
+## 2026-11-05 — Ruleset and region: PvP, North America
+
+- **Context:** WoW: Forever has no realms; players pick a ruleset (Normal,
+  PvP, Roleplay, Roleplay-PvP), one mega-realm per region. The site never
+  said which one R!ot plays on, so recruits could not tell if they could join.
+- **Decision:** R!ot plays on the **PvP** ruleset in the **North America**
+  region. State it in the hero, the join box and the meta description.
+- **Consequences:** All copy and structured data name the ruleset and region.
+  Raid times stay in ET with the visitor's local time shown beside them.
+
+## 2026-11-05 — Site address: rename the Cloudflare Pages project
+
+- **Context:** The live project is still named `skuld-wow` after the
+  previous guild, so every shared link, the canonical URL and the share image
+  carry the old name.
+- **Decision:** Rename the Pages project to a R!ot name (`riot-wow` if free)
+  rather than buy a domain now. Andy performs the rename in the Cloudflare
+  dashboard; a custom domain can be attached later without further changes.
+- **Consequences:** Once renamed, one sweep updates canonical, Open Graph,
+  Twitter, JSON-LD, `robots.txt` and `sitemap.xml` to the new origin.
+  Cloudflare keeps the old `*.pages.dev` name reserved briefly; shared links
+  to the old name stop working, which is acceptable.
+
+## 2026-11-05 — Deploy by connecting Cloudflare Pages to this repo
+
+- **Context:** Deploys were manual zip uploads, untied to merges, with no
+  preview and easy to forget. Two merged fixes are already not live.
+- **Decision:** Connect the Pages project to `tyr-arema/Riot-Guild-Website`:
+  production from `main`, a preview URL per pull request. No build command
+  and output directory `/` while the site is plain files; those change when
+  the static-generator decision lands.
+- **Consequences:** Merging to `main` is deploying. PR previews let the
+  reviewer open the change before merge. The Direct Upload entry above is
+  superseded.
+
+## 2026-11-05 — The site may host an application form
+
+- **Context:** Applications happen only in the Discord applications room,
+  and the site has no way for a visitor to reach the guild.
+- **Decision:** The site may carry an application form that posts to a
+  Cloudflare Pages Function, which forwards to a Discord webhook. The
+  webhook URL lives only as a Cloudflare secret. The form asks the same three
+  intake questions as the Discord join flow.
+- **Consequences:** `functions/` becomes part of the repo; the secret never
+  does. A spam guard (honeypot plus rate limit) ships with the form. The
+  Discord room remains the officers' review surface.
