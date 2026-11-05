@@ -3,6 +3,17 @@
 Newest entry first. One short dated entry per work session: what was done,
 what's in progress, what's blocked, what's recommended next.
 
+## 2026-11-05 — Owner decisions recorded (Andy's hub agent)
+
+- **Did:** Andy answered ROADMAP section 5. Recorded in DECISIONS.md:
+  ruleset PvP / region NA; rename the Pages project (Andy does it in the
+  dashboard); git-connected Pages deploys from `main` with PR previews; the
+  site may host an application form via a Pages Function + Discord webhook
+  secret. The Eleventy decision is a separate PR awaiting CJ's side.
+- **Blocked:** Discord invite link still unsupplied; CTAs stay text-only.
+- **Recommended next:** Whinny reviews the Eleventy PR. Hub starts the
+  ruleset copy change and the Playwright CI check.
+
 ## 2026-11-05 — Site analysis and roadmap (Andy's hub agent)
 
 - **Did:** Read the whole site and the collaborator docs, researched WoW:
