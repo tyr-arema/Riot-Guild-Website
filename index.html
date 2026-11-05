@@ -229,14 +229,14 @@
       <a class="btn ghost" href="#server">Tour the cellblock ↓</a>
     </div>
     <div class="count" role="timer" aria-label="Countdown to raids opening">
-      <p class="lbl">Raids open in</p>
-      <div class="nums">
+      <p class="lbl" id="cd-lbl">Raids open in</p>
+      <div class="nums" id="cd-nums">
         <div class="n"><b id="cd-d">—</b><span>Days</span></div>
         <div class="n"><b id="cd-h">—</b><span>Hours</span></div>
         <div class="n"><b id="cd-m">—</b><span>Minutes</span></div>
         <div class="n"><b id="cd-s">—</b><span>Seconds</span></div>
       </div>
-      <p class="when">December 9, 2026 · first pulls 8:00 PM ET</p>
+      <p class="when" id="cd-when">December 9, 2026 · first pulls 8:00 PM ET</p>
     </div>
   </div>
 </section>
@@ -615,15 +615,86 @@
 </footer>
 
 <script>
-  // Countdown to raids opening — Dec 9, 2026, 8:00 PM ET (EST, UTC-5)
+  // Countdown: raids open Dec 9, 2026 8:00 PM ET, then the next Sat/Sun 8:00 PM ET raid night.
+  // America/New_York offsets come from Intl so DST is handled with no library. ?now=<ISO> overrides the clock for testing.
   (function(){
-    var target = new Date('2026-12-09T20:00:00-05:00').getTime();
+    var LAUNCH = {y:2026, mo:12, d:9};
+    var q = new URLSearchParams(location.search).get('now');
+    var fake = q ? Date.parse(q) : NaN;
+    var t0 = Date.now();
+    function now(){ return isNaN(fake) ? Date.now() : fake + (Date.now() - t0); }
+    var etParts = new Intl.DateTimeFormat('en-US', {timeZone:'America/New_York', hourCycle:'h23', year:'numeric', month:'numeric', day:'numeric', hour:'numeric', minute:'numeric', second:'numeric'});
+    function etWall(ms){
+      var o = {};
+      etParts.formatToParts(new Date(ms)).forEach(function(p){ o[p.type] = +p.value; });
+      return o;
+    }
+    // ET offset from UTC in ms at a given instant (negative: -5h EST, -4h EDT)
+    function etOffset(ms){
+      var w = etWall(ms);
+      return Date.UTC(w.year, w.month-1, w.day, w.hour, w.minute, w.second) - Math.floor(ms/1000)*1000;
+    }
+    // Instant for a wall-clock time in America/New_York
+    function etInstant(y, mo, d, h, mi){
+      var guess = Date.UTC(y, mo-1, d, h, mi);
+      var t = guess - etOffset(guess);
+      return guess - etOffset(t);
+    }
+    var lbl=document.getElementById('cd-lbl'), nums=document.getElementById('cd-nums'), when=document.getElementById('cd-when'), box=lbl.parentNode;
     var d=document.getElementById('cd-d'),h=document.getElementById('cd-h'),m=document.getElementById('cd-m'),s=document.getElementById('cd-s');
     function pad(n){return String(n).padStart(2,'0');}
-    function tick(){
-      var diff = Math.max(0, target - Date.now());
+    function fmt(ms, opts){ return new Intl.DateTimeFormat('en-US', opts).format(new Date(ms)); }
+    // "Saturday 8:00 PM ET · 5:00 PM PST (your time)"; the local part is omitted when the visitor is on ET
+    function whenLine(ms, dayName){
+      var line = dayName + ' ' + fmt(ms, {timeZone:'America/New_York', hour:'numeric', minute:'2-digit'}) + ' ET';
+      if(etOffset(ms) !== -new Date(ms).getTimezoneOffset()*60000){
+        var local = fmt(ms, {hour:'numeric', minute:'2-digit', timeZoneName:'short'});
+        var etDay = fmt(ms, {timeZone:'America/New_York', weekday:'long'}), myDay = fmt(ms, {weekday:'long'});
+        line += ' · ' + (etDay !== myDay ? myDay + ' ' : '') + local + ' (your time)';
+      }
+      return line;
+    }
+    // Next Sat/Sun 8 PM ET start at or after the current raid window, or the live window we're in
+    function raidState(t){
+      var w = etWall(t);
+      for(var i=0; i<9; i++){
+        var day = new Date(Date.UTC(w.year, w.month-1, w.day + i));
+        var dow = day.getUTCDay();
+        if(dow !== 6 && dow !== 0) continue;
+        var y=day.getUTCFullYear(), mo=day.getUTCMonth()+1, dd=day.getUTCDate();
+        var start = etInstant(y, mo, dd, 20, 0), end = etInstant(y, mo, dd, 23, 0);
+        if(t >= start && t < end) return {live:true};
+        if(t < start) return {live:false, target:start, name:dow === 6 ? 'Saturday' : 'Sunday'};
+      }
+    }
+    var launch = etInstant(LAUNCH.y, LAUNCH.mo, LAUNCH.d, 20, 0);
+    var mode = '';
+    function setMode(key, label, aria, whenText, showNums){
+      if(mode === key) return;
+      mode = key;
+      lbl.textContent = label;
+      box.setAttribute('aria-label', aria);
+      nums.style.display = showNums ? '' : 'none';
+      when.textContent = whenText;
+    }
+    function show(diff){
       var days = Math.floor(diff/86400000), hrs = Math.floor(diff%86400000/3600000), min = Math.floor(diff%3600000/60000), sec = Math.floor(diff%60000/1000);
       d.textContent = days; h.textContent = pad(hrs); m.textContent = pad(min); s.textContent = pad(sec);
+    }
+    function tick(){
+      var t = now();
+      if(t < launch){
+        setMode('launch', 'Raids open in', 'Countdown to raids opening', 'December 9, 2026 · first pulls ' + whenLine(launch, '').trim(), true);
+        show(launch - t);
+        return;
+      }
+      var r = raidState(t);
+      if(r.live){
+        setMode('live', 'Raid night is live', 'Raid night is live', 'Raiding now · until 11:00 PM ET', false);
+        return;
+      }
+      setMode('next-' + r.target, 'Next raid night in', 'Countdown to the next raid night, ' + r.name + ' 8:00 PM ET', whenLine(r.target, r.name), true);
+      show(r.target - t);
     }
     tick(); setInterval(tick, 1000);
   })();
